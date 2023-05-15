@@ -11,17 +11,17 @@ from dotenv import load_dotenv
 
 # load the environment variables
 load_dotenv()
-apikey = os.environ['API_KEY']
-url = os.environ['URL']
+API_KEY = os.environ['API_KEY']
+URL = os.environ['URL']
 
 # setup ibm watson language translator
-authenticator = IAMAuthenticator(apikey=apikey)
+authenticator = IAMAuthenticator(apikey=API_KEY)
 translator_service = LanguageTranslatorV3(
     version='2018-05-01',
     authenticator=authenticator)
 
-translator_service.set_service_url(url)
-translator_service.set_disable_ssl_verification(True)
+translator_service.set_service_url(URL)
+# translator_service.set_disable_ssl_verification(True)
 
 
 def englishToFrench(englishText):

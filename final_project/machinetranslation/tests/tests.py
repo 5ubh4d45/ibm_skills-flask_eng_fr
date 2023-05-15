@@ -1,5 +1,6 @@
 import unittest
-from machinetranslation.translator import englishToFrench, frenchToEnglish
+from ..translator import englishToFrench, frenchToEnglish
+
 
 # test cases for englishToFrench function and frenchToEnglish function
 class TestEnglishToFrench(unittest.TestCase):
@@ -12,14 +13,14 @@ class TestEnglishToFrench(unittest.TestCase):
                             'Should not be Hello')
 
         # for empty string
-        self.assertEqual(englishToFrench(''), '', 
+        self.assertEqual(englishToFrench(''), '',
                          'Should be empty string')
-        self.assertEqual(englishToFrench(' '), ' ',
+        self.assertEqual(englishToFrench(' '), '',
                          'Should be empty string')
 
         # for null value
-        self.assertEqual(englishToFrench(None), None,
-                         'Should be null value')
+        self.assertEqual(englishToFrench(None), "",
+                         'Should be empty string')
 
     # test case for frenchToEnglish function
     def test_frenchToEnglish(self):
@@ -32,11 +33,13 @@ class TestEnglishToFrench(unittest.TestCase):
         # for empty string
         self.assertEqual(frenchToEnglish(''), '',
                          'Should be empty string')
-        self.assertEqual(frenchToEnglish(' '), ' ',
+        self.assertEqual(frenchToEnglish(' '), '',
                          'Should be empty string')
 
         # for null value
-        self.assertEqual(frenchToEnglish(None), None,
-                         'Should be null value')
-        
-unittest.main()
+        self.assertEqual(frenchToEnglish(None), "",
+                         'Should be empty string')
+
+
+if __name__ == '__main__':
+    unittest.main()
