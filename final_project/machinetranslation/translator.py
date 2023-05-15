@@ -3,11 +3,11 @@ translator module which uses IBM Watson Language Translator API \
     to translate text from one language to another.
 """
 
-import json
-from ibm_watson import LanguageTranslatorV3
-from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 import os
+
 from dotenv import load_dotenv
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+from ibm_watson import LanguageTranslatorV3
 
 # load the environment variables
 load_dotenv()
@@ -21,51 +21,54 @@ translator_service = LanguageTranslatorV3(
     authenticator=authenticator)
 
 translator_service.set_service_url(URL)
+
+
 # translator_service.set_disable_ssl_verification(True)
 
 
-def englishToFrench(englishText):
-    #write the code here
+def english_to_french(english_text):
+    # write the code here
     # switch case for NONE input
-    if englishText is None:
+    if english_text is None:
         return ""
-    
+
     # strip the text for empty string
-    englishText = englishText.strip()
+    english_text = english_text.strip()
 
     # switch case for empty string
-    if englishText == "":
+    if english_text == "":
         return ""
-    
+
     # translate the text
-    frenchText = translator_service.translate(
-        text=englishText,
+    french_text = translator_service.translate(
+        text=english_text,
         model_id='en-fr').get_result()
-    
+
     # filter the translated text
-    frenchText = frenchText['translations'][0]['translation']
+    french_text = french_text['translations'][0]['translation']
 
-    return frenchText
+    return french_text
 
-def frenchToEnglish(frenchText):
-    #write the code here
+
+def french_to_english(french_text):
+    # write the code here
     # switch case for NONE input
-    if frenchText is None:
+    if french_text is None:
         return ""
-    
+
     # strip the text for empty string
-    frenchText = frenchText.strip()
+    french_text = french_text.strip()
 
     # switch case for empty string
-    if frenchText == "":
+    if french_text == "":
         return ""
-    
+
     # translate the text
-    englishText = translator_service.translate(
-        text=frenchText,
+    english_text = translator_service.translate(
+        text=french_text,
         model_id='fr-en').get_result()
-    
+
     # filter the translated text
-    englishText = englishText['translations'][0]['translation']
-    
-    return englishText
+    english_text = english_text['translations'][0]['translation']
+
+    return english_text
