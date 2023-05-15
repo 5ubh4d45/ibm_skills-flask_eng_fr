@@ -21,5 +21,7 @@ def renderIndexPage():
     # Write the code to render template
     return "Translated text to English"
 
+# print(translator.englishToFrench("Hello"))
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
